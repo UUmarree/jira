@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+     body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+     }
+     
+    .Main-Menu{
+      display: flex;
+     
+      background-color: #f5f5f5;
+    }
+    .logo-container{
+      margin: auto;
+    }
+    .searchlogo{
+      transform: rotate(-90deg);
+    }
+    .search-container{
+      width:30px ;
+      margin-left: 5%;
+      display: flex;
+      align-items: end;
+    }
+    .asset-container{
+      width:fit-content ;
+      margin-right: 5em;
+      display: flex;
+      align-items: end;
+    }
+    .menu-logo-container{
+      display: none;
+    }
+    .search-input {
+      display: none; /* Hide the input by default */
+      padding: 8px;
+      border-radius: 50px;
+    }
+    .nav-menu{
+      display: flex;
+      gap: 2em;
+      list-style-type: none;
+      justify-content: center;
+      background-color: bisque;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0;
+    }
+    /* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropdown-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the button when the dropdown content is visible */
+.dropdown:hover .dropdown-button {
+    background-color: #3e8e41;
+}
+
+    @media(max-width:768px){
+      .search-container{
+        display: none;
+      }
+      .asset-container{
+        display: none;
+      }
+      .logo-container{
+        width: 100%;
+        align-self: start;
+      }
+      .menu-logo-container{
+        display: block;
+        margin-left: auto;
+        width: 10%;
+        margin-right: 5%;
+        height: max-content;
+        background-color:green ;
+      }
+      .menu-logo{
+        width: 100%;
+      }
+      .nav-menu{
+      display: none;
+    }
+    }
+   </style>
+</head>
+<body>
+  <span></span>
+ <header >
+  <div class="Main-Menu">
+      <div class="search-container">
+        <img onclick="toggleSearchInput();" class="searchlogo" src="1x/Asset 2.png" alt="">
+        <input type="text" id="search-input" class="search-input" placeholder="Search...">
+      </div>
+      <div class="logo-container">
+        <img class="logo" src="1x/Asset 1.png" alt="">
+      </div>
+     
+      <div class="asset-container">
+        <img src="1x/Asset 3.png" alt="">
+      </div>
+      <div class="menu-logo-container">
+        <svg class="menu-logo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+          <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
+        </svg>
+      </div>
+    </div>
+    <nav >
+      <ul class="nav-menu">
+        <li>
+          <div class="dropdown">
+            <button class="dropdown-button">New Arrivals</button>
+            <div class="dropdown-content">
+                <a href="#link1">Link 1</a>
+                <a href="#link2">Link 2</a>
+                <a href="#link3">Link 3</a>
+            </div>
+        </div></li>
+        <li>Boys</li>
+        <li>Girls</li>
+        <li>Sale</li>
+      </ul>
+    </nav>
+    
+ </header>
+ 
+<script>
+  function toggleSearchInput() {
+    const logo = document.querySelector('.searchlogo');
+    const input = document.getElementById('search-input');
+    if (input.style.display === 'none' || input.style.display === '') {
+        input.style.display = 'inline-block';
+        logo.style.display = 'none';
+        input.focus(); // Focus on the input when it is displayed
+    } else {
+        input.style.display = 'none';
+        logo.style.display = 'inline';
+    }
+  }
+
+  // Click event to hide the input when clicking outside of it
+  document.addEventListener('click', function(event) {
+    const input = document.getElementById('search-input');
+    const logo = document.querySelector('.searchlogo');
+    if (input.style.display === 'inline-block' && !input.contains(event.target) && !logo.contains(event.target)) {
+        input.style.display = 'none';
+        logo.style.display = 'inline';
+    }
+  });
+</script>
+</body>
+</html>
